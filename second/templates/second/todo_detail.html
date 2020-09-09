@@ -1,0 +1,90 @@
+{% extends 'second/layout.html'%}
+{% load static %}
+{% block title%}
+    <style>
+    #title {
+        font-size: 25px;
+        font-family: 'Nanum Gothic', sans-serif;
+        font-weight: 700;
+        border-bottom: 1px solid #d3d3d3;
+        margin-left: 30px;
+        margin-top: 35px;
+        width: 850px;
+    }
+    
+    #title > img {
+        float: right;
+        width: 23px;
+        margin-left: 10px;
+        overflow: auto;
+    }
+
+    #detailbox {
+        border : 1px solid #d3d3d3;
+        border-radius: 6px;
+        width: 800px;
+        height: 260px;
+        padding: 15px;
+        margin-top: 20px;
+        margin-left: 30px;
+        background-color: white;
+        overflow:auto;
+    }
+    .table {
+        width: 800px;
+    }
+    .theme, .text {
+        padding: 8px;
+        font-family: 'Nanum Gothic', sans-serif;
+    }
+    .theme{
+        font-weight: 700;
+    }
+    .text {
+        padding-left: 130px;
+    }
+    
+    
+    </style>
+    <title>favorite_detail</title>
+{% endblock %}
+{% block content %}
+    <div id='title'>
+        {{detail.name}}
+        <img src="{% static 'second/icon_delete.png' %}"/>
+        <img src="{% static 'second/icon_modify.png' %}"/>
+    </div>
+        <div id='detailbox'>
+            <table>
+                <tr>
+                    <td class='theme'>순번</td>
+                    <td class='text'>{{detail.seq}}</td>
+                </tr>
+                <tr>
+                    <td class='theme'>명칭</td>
+                    <td class='text'>{{detail.name}}</td>
+                </tr>
+                <tr>
+                    <td class='theme'>상태</td>
+                    <td class='text'>{{detail.status}}</td>
+                </tr>
+                <tr>
+                    <td class='theme'>등록일</td>
+                    <td class='text'>{{detail.reg_date}}</td>
+                </tr>
+                <tr>
+                    <td class='theme'>종료일</td>
+                    <td class='text'>{{detail.end_date}}</td>
+                </tr>
+                <tr>
+                    <td class='theme'>삭제여부</td>
+                    <td class='text'>{{detail.del_yn}}</td>
+                </tr>
+                <tr>
+                    <td class='theme'>그룹</td>
+                    <td class='text'>{{detail.group}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+{%endblock%}

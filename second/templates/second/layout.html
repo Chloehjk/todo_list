@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500;700;900&display=swap" rel="stylesheet">
+    <style>
+    html, body, div, ul, li{
+        margin: 0px;
+        padding: 0px;
+    }
+    html, body {
+        height: 100%;
+    }
+    body > div:nth-of-type(1){
+        width: 300px;
+        height: 100%;
+        background-color: #4c4cab;
+    }
+    body > div:nth-of-type(2) {
+        width: 1200px;
+        height: 100%;
+        background-color: #F6F5FA;
+    }
+    body > div {
+        float: left;
+    }
+
+    body > div > h3 {
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 25px;
+        color: white;
+        text-align: center;
+    }
+    body > div > ul > li > a {
+        color: white;
+        margin-left: 45px;
+        margin-bottom: 15px;
+        list-style-type: none;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-weight: 500;
+        text-decoration: none;
+        color: #bbbbe5
+    }
+    body > div > ul > li {
+        margin-bottom: 15px;
+    }
+
+    .list {
+            border : 1px solid #d3d3d3;
+            border-radius: 6px;
+            width: 300px;
+            padding: 15px;
+            margin-top: 15px;
+            margin-left: 30px;
+            background-color: white;
+            overflow:auto;
+    }
+    .name {
+        float: left;
+        font-size: 15px;
+        font-family: 'Nanum Gothic', sans-serif;
+        font-weight: 700;
+    } 
+    .date, .group {
+        float: right;
+        font-size: 15px;
+        font-family: 'Nanum Gothic', sans-serif;
+        font-weight: 400;
+    }
+    .date {
+        margin-right: 15px;x`
+    }
+
+    body > div > ul > li > a > img {
+        width: 15px;
+    }
+    </style>
+    {% block title%}
+    {% endblock %}
+</head>
+<body>
+    <div>
+        <h3>TODO&FAVORITE</h3>
+        <ul>
+        <li>
+            <a href='{% url 'second:index'%}'>
+                <img src="{% static 'second/icon_home.png' %}"/>
+                Home
+            </a>
+        </li>
+        <li>
+            <a href='{% url 'second:favorite_view'%}'>
+                <img src="{% static 'second/icon_favorite.png' %}"/>
+                Favorite
+            </a>
+        </li>
+        <li>
+            <a href='{% url 'second:todo'%}'>
+                <img src="{% static 'second/icon_todo.png' %}"/>
+                Todo
+            </a>
+        </li>
+        </ul>
+    </div>
+    <div>
+    {% block content %}
+    </div>
+    {% endblock%}
+</body>
+</html>

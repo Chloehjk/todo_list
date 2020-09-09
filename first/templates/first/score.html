@@ -1,0 +1,28 @@
+{% extends 'first/layout.html'%}
+{% block title %}
+<title>점수</title>
+<style>
+        body > table > tbody > tr: nth-of-type(1){
+            font-size: 30px;
+        }
+</style>
+{% endblock %}
+
+{% block content %}
+    <table>
+        <tr>
+            <td>이름</td>
+            <td>수학</td>
+            <td>영어</td>
+            <td>과학</td>    
+        </tr>
+        {% for score in score %}
+        <tr>
+            <td>{{score.name}}</td>
+            <td>{{score.math}}</td>
+            <td>{{score.english}}</td>
+            <td>{{score.science}}</td>
+        </tr>
+            {% endfor%}
+    </table>
+{%endblock%}

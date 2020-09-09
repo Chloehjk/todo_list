@@ -1,0 +1,78 @@
+{% extends 'second/layout.html'%}
+{% load static %}
+{% block title %}
+    <style>
+    #title > img {
+        float: right;
+        width: 23px;
+        margin-left: 10px;
+        overflow: auto;
+    }
+
+    #detailbox {
+        border : 1px solid #d3d3d3;
+        border-radius: 6px;
+        width: 800px;
+        height: 230px;
+        padding: 15px;
+        margin-top: 20px;
+        margin-left: 30px;
+        background-color: white;
+        overflow:auto;
+    }
+    .table {
+        width: 800px;
+    }
+    .theme, .text {
+        padding: 8px;
+        font-family: 'Nanum Gothic', sans-serif;
+    }
+    .theme{
+        font-weight: 700;
+    }
+    .text {
+        padding-left: 130px;
+    }
+    
+    
+    </style>
+    <title>favorite_detail</title>
+{% endblock %}
+{% block content %}
+    <div id='title'>
+        {{detail.name}}
+        <img src="{% static 'second/icon_delete.png' %}"/>
+        <img src="{% static 'second/icon_modify.png' %}"/>
+    </div>
+        <div id='detailbox'>
+            <table>
+                <tr>
+                    <td class='theme'>순번</td>
+                    <td class='text'>{{detail.seq}}</td>
+                </tr>
+                <tr>
+                    <td class='theme'>명칭</td>
+                    <td class='text'>{{detail.name}}</td>
+                </tr>
+                <tr>
+                    <td class='theme'>URL</td>
+                    <td class='text'>{{detail.url}}</td>
+                </tr>
+                <tr>
+                    <td class='theme'>메모</td>
+                    <td class='text'>{{detail.memo}}</td>
+                </tr>
+                <tr>
+                    <td class='theme'>등록일</td>
+                    <td class='text'>{{detail.reg_date}}</td>
+                </tr>
+                <tr>
+                    <td class='theme'>그룹</td>
+                    <td class='text'>{{detail.group}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+
+{%endblock%}

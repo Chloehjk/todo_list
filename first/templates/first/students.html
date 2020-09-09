@@ -1,0 +1,15 @@
+{% extends 'first/layout.html'%}
+{%block title%}
+<title>학생들</title>
+{% endblock %}
+{%block content%}
+    <h3>{{text}}</h3>
+    {% for student in students %}
+    <!-- 이 안의 내용들이 반복된다-->
+    <div>
+        {{student.name}}
+        {{student.address}}
+        {{student.email}}
+    </div>
+    {% endfor%}
+{%endblock%}

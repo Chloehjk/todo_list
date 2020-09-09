@@ -1,0 +1,115 @@
+{% extends 'second/layout.html'%}
+{% load static%}
+{% block title%}
+    <title>Todo</title>
+    <style>
+        
+        #todo {
+            font-size: 25px;
+            font-family: 'Nanum Gothic', sans-serif;
+            font-weight: 700;
+            width: 1060px;
+            border-bottom: 1px solid #d3d3d3;
+            margin-left: 30px;
+            margin-top: 35px;
+        }
+        #todo > img {
+            width: 15px;
+            float: right;
+        }
+        .box {
+            float: left;
+            margin-top: 50px;
+            width: 30%;
+        }
+        .status {
+            width: 300px;
+            font-size: 18px;
+            text-align: center;
+            font-family: 'Nanum Gothic', sans-serif;
+            font-weight: 800;
+            margin-left: 30px;
+
+        }
+        .list > a {
+            color: black;
+        }
+        .list > div > a >img {
+            float: right;
+            width: 15px;
+            margin-left: 5px;
+        }
+
+    </style>
+
+{% endblock %}
+{% block content %}
+    <div id='todo'>
+        내가 할 일
+        <img src="{% static 'second/icon_add.png' %}"/>
+    </div>
+    <div class='box'>
+        <div class='status'>대기중</div>
+        {%for t in pending%}
+        <div class='list'>
+            <div class='name'>
+            {{t.name}}
+            </div>
+            <div>
+            <a href='{% url 'second:todo_detail' t.seq %}'>
+                <img src="{% static 'second/icon_more.png' %}"/>
+            </a>
+            </div>
+            <div class='group'>
+            {{t.group}}
+            </div>
+            <div class='date'>
+            {{t.reg_date|date:'Y-m-d'}}
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+    
+    <div class='box'>
+        <div class='status'>진행중</div>
+        {%for t in inprogress%}
+        <div class='list'>
+            <div class='name'>
+            {{t.name}}
+            </div>
+            <div>
+            <a href='{% url 'second:todo_detail' t.seq %}'>
+                <img src="{% static 'second/icon_more.png' %}"/>
+            </a>
+            </div>
+            <div class='group'>
+            {{t.group}}
+            </div>
+            <div class='date'>
+            {{t.reg_date|date:'Y-m-d'}}
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+
+    <div class='box'>
+        <div class='status'>완료</div>
+        {%for t in end%}
+        <div class='list'>
+            <div class='name'>
+            {{t.name}}
+            </div>
+             <div>
+            <a href='{% url 'second:todo_detail' t.seq %}'>
+                <img src="{% static 'second/icon_more.png' %}"/>
+            </a>
+            </div>
+            <div class='group'>
+            {{t.group}}
+            </div>
+            <div class='date'>
+            {{t.reg_date|date:'Y-m-d'}}
+            </div>
+        </div>
+        {%endfor%}
+{% endblock %}
