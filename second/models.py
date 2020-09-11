@@ -1,4 +1,5 @@
 from django.db import models
+from django import forms
 
 # Create your models here.
 class FavoriteGroup(models.Model):
@@ -29,8 +30,13 @@ class TodoGroup(models.Model):
 class Todo(models.Model):
     seq = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50)
-    status = models.CharField(max_length=100)
     reg_date = models.DateField(auto_now_add=True)
     end_date = models.DateField()
     del_yn = models.BooleanField(default=False)
     group = models.ForeignKey(TodoGroup, on_delete=models.CASCADE)
+    STATUS_CHOICES = (
+        ('pending','할 일'),
+        ('inprogress','진행중'),
+        ('end', '완료')
+    )
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES)

@@ -13,7 +13,7 @@
             margin-left: 30px;
             margin-top: 35px;
         }
-        #todo > img {
+        #todo > a > img {
             width: 15px;
             float: right;
         }
@@ -46,7 +46,9 @@
 {% block content %}
     <div id='todo'>
         내가 할 일
-        <img src="{% static 'second/icon_add.png' %}"/>
+        <a href='{% url 'second:todo_register' %}'>
+            <img src="{% static 'second/icon_add.png' %}"/>
+        </a>
     </div>
     <div class='box'>
         <div class='status'>대기중</div>

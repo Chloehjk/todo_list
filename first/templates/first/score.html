@@ -2,13 +2,64 @@
 {% block title %}
 <title>점수</title>
 <style>
-        body > table > tbody > tr: nth-of-type(1){
-            font-size: 30px;
-        }
+    body, html, div, ul, li {
+        margin: 0px;
+        padding: 0px;
+    }
+    body > table > tbody > tr: nth-of-type(1){
+        font-size: 30px;
+    }
+    body > ul > li {
+        list-style-type: none;
+    }
+
+    body > ul  {
+        margin-left: 30px;
+    }
+    body > ul > li:nth-of-type(5) {
+        margin-top: 5px;
+    }
+    body > table {
+        margin-left: 10px;
+        margin-top: 15px;
+    }
 </style>
 {% endblock %}
 
 {% block content %}
+<form action="{% url 'first:score' %}" method="post">
+{% csrf_token %}
+    <ul>
+        <li>
+            <div>
+            이름
+            <input name="name" type="text"/>
+            </div>
+        </li>
+        <li>
+            <div>
+            수학
+            <input name="math" type="text"/>
+            </div>
+        </li>
+        <li>
+            <div>
+            영어
+            <input name="english" type="text"/>
+            </div>
+        </li>
+        <li>
+            <div>
+            과학
+            <input name="science" type="text"/>
+            </div>
+        </li>
+        <li>
+            <input type="submit" value="등록"/>
+            </div>
+        </li>
+    </ul>
+    
     <table>
         <tr>
             <td>이름</td>
@@ -16,13 +67,15 @@
             <td>영어</td>
             <td>과학</td>    
         </tr>
-        {% for score in score %}
+        {% for s in score %}
         <tr>
-            <td>{{score.name}}</td>
-            <td>{{score.math}}</td>
-            <td>{{score.english}}</td>
-            <td>{{score.science}}</td>
+            <td>{{s.name}}</td>
+            <td>{{s.math}}</td>
+            <td>{{s.english}}</td>
+            <td>{{s.science}}</td>
         </tr>
-            {% endfor%}
+        {% endfor%}
     </table>
+
+</form>
 {%endblock%}

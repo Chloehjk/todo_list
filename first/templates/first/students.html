@@ -1,15 +1,18 @@
-{% extends 'first/layout.html'%}
-{%block title%}
+{% extends 'first/layout.html' %}
+{% block title %}
 <title>학생들</title>
 {% endblock %}
-{%block content%}
-    <h3>{{text}}</h3>
+{% block content %}
+    <h3>{{ text|truncatechars:10 }}</h3>
+    <h3>{{ date|date:'Y-m-d' }}</h3>
+    <a href="{% url 'first:student_add' %}">등록</a>
     {% for student in students %}
-    <!-- 이 안의 내용들이 반복된다-->
+    <!-- 요 안에있는 내용들이 반복됩니다 -->
     <div>
-        {{student.name}}
-        {{student.address}}
-        {{student.email}}
+        {{ student.name }}
+        {{ student.address }}
+        {{ student.email }}
+        <a href="{% url 'first:student_modify' student.id%}">수정</a>
     </div>
-    {% endfor%}
-{%endblock%}
+    {% endfor %}
+{% endblock %}

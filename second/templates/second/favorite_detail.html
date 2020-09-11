@@ -9,6 +9,13 @@
         overflow: auto;
     }
 
+    #title > a > img {
+        float: right;
+        width: 23px;
+        margin-left: 10px;
+        overflow: auto;
+    }
+
     #detailbox {
         border : 1px solid #d3d3d3;
         border-radius: 6px;
@@ -41,8 +48,12 @@
 {% block content %}
     <div id='title'>
         {{detail.name}}
-        <img src="{% static 'second/icon_delete.png' %}"/>
-        <img src="{% static 'second/icon_modify.png' %}"/>
+        <a href="{% url 'second:favorite_delete' detail.seq %}">
+            <img src="{% static 'second/icon_delete.png' %}"/>
+        </a>
+        <a href="{% url 'second:favorite_modify' detail.seq %}">
+            <img src="{% static 'second/icon_modify.png' %}"/>
+        </a>
     </div>
         <div id='detailbox'>
             <table>
